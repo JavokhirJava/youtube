@@ -1,14 +1,12 @@
 package com.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -17,7 +15,7 @@ import java.time.LocalDateTime;
 public class AttachEntity {
     //    id(uuid),origin_name,size,type (extension),path,duration
     @Id
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue(strategy =GenerationType.UUID)
     private String id;
     @Column(name = "original_name")
     private String originalName;
@@ -29,4 +27,5 @@ public class AttachEntity {
     private String path;
     @Column(name = "created_date")
     private LocalDateTime createdData;
+    private LocalTime duration;
 }
