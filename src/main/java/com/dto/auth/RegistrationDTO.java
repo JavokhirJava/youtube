@@ -14,8 +14,6 @@ public class RegistrationDTO {
     private String surname;
     @NotNull(message = "Email required")
     private String email;
-    @NotNull(message = "Phone required")
-    private String phone;
     @NotNull(message = "Password required")
     private String password;
 }
