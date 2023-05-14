@@ -7,9 +7,8 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
-@Getter
 @Setter
+@Getter
 public class AttachDTO {
     @NotNull(message = "id required")
     private String id;
