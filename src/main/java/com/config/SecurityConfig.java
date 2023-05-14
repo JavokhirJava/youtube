@@ -25,9 +25,9 @@ public class SecurityConfig {
     private TokenFilter tokenFilter;
 
     public static String[] AUTH_WHITELIST = {
-//            "/api/v1/*/public/**",
-//            "/api/v1/auth/**",
-//            "/api/v1/auth"
+            "/api/v1/*/public/**",
+            "/api/v1/auth/**",
+            "/api/v1/auth"
     };
 
     @Bean
@@ -63,7 +63,6 @@ public class SecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .requestMatchers("/api/v1/*/adm/**").hasRole("ADMIN")
-                .requestMatchers("/api/v1/article/role/**").hasAnyRole("PUBLISHER","MODERATOR")
                 .requestMatchers(HttpMethod.PUT, "/api/v1/article/private/update").hasAnyRole("ADMIN", "MODERATOR")
                 .anyRequest()
                 .authenticated();
