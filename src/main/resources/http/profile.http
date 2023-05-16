@@ -9,11 +9,19 @@ Content-Type:  application/json
   "password": "202020",
   "email": "AliyevVali@gmail.com"
 }
+
+
 ### change paswword
-POST localhost:8081/profile/change
+PUT localhost:8081/api
 Content-Type: application/json
 
 {
   "oldPassword": "88888",
   "newPassword": "99999"
 }
+
+
+
+### get all
+GET localhost:8081/api/v1/profile/private/admin/profile-Detail
+Content-Type: application/json

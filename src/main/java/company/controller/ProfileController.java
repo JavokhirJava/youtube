@@ -39,12 +39,16 @@ public class ProfileController {
         Boolean update = profileService.updateEmail(dto, prtId);
         return ResponseEntity.ok(update);
     }
-    // Get Profile Detail (id,name,surname,email,main_photo((url)))
     @GetMapping("/private/admin/profile-Detail")
     public ResponseEntity<Page<ProfileDTO>> getAllProfileDetails(@RequestParam(value = "page", defaultValue = "1") int page,
                                                   @RequestParam(value = "size", defaultValue = "2") int size,
                                                   HttpServletRequest request) {
         JwtUtil.checkForRequiredRole(request, ProfileRole.ROLE_ADMIN);
         return ResponseEntity.ok(profileService.getProfileDetail(page, size));
+    }
+    @PostMapping("/changePassword")
+    public ResponseEntity<ChangeDTO> changePassword(@Valid @RequestBody ChangeDTO dto) {
+        ChangeDTO response = profileService.changePassword(dto);
+        return ResponseEntity.ok(response);
     }
 }

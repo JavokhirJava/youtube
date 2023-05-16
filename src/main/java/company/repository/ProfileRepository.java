@@ -19,7 +19,7 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
 
     Optional<ProfileEntity> findByEmailAndPasswordAndVisible(String email, String password, boolean visible);
 
-//    ProfileEntity findByPassword(String password);
+    ProfileEntity findByPassword(String encode);
 
     @Transactional
     @Modifying
@@ -34,4 +34,8 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
     ProfileMapper getProfileById(Integer profileId);
 
 
+    @Transactional
+    @Modifying
+    @Query("update ProfileEntity set password = ?2 where id = ?1")
+    int updatePassword(Integer id, String newPassword);
 }
