@@ -25,6 +25,7 @@ public class ProfileDTO {
     @Size(min = 4,max = 20,message = "Password must contain 4 characters")
     private String password;
     private String email;
+    private ProfileRole role;
     private LocalDateTime createdDate;
     private String photoId;
     private GeneralStatus status;

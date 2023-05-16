@@ -6,6 +6,7 @@ import company.enums.GeneralStatus;
 import company.enums.ProfileRole;
 import company.exps.AppBadRequestException;
 import company.exps.ItemNotFoundException;
+import company.mapper.ProfileMapper;
 import company.repository.ProfileRepository;
 import company.util.MD5Util;
 import company.util.SpringSecurityUtil;
@@ -21,14 +22,12 @@ public class ProfileService {
     private ProfileRepository profileRepository;
     @Autowired
     private AttachService attachService;
-    public ProfileEntity getProfile(Integer profileId) {
+    public ProfileEntity get(Integer profileId) {
         Optional<ProfileEntity> optional = profileRepository.findById(profileId);
         if (optional.isEmpty()){
             throw new ItemNotFoundException("profile not found");
         }
-        ProfileEntity entity = optional.get();
-        entity.setRole(ProfileRole.ROLE_OWNER);
-        return entity;
+        return optional.get();
     }
     public ProfileEntity toEntity(ProfileDTO profileDTO) {
         ProfileEntity entity = new ProfileEntity();
@@ -61,6 +60,17 @@ public class ProfileService {
         profileRepository.save(entity);
         dto.setPassword(null);
         dto.setId(entity.getId());
+        return dto;
+    }
+    public ProfileDTO getProfile(Integer profileId) {
+        ProfileMapper mapper = profileRepository.getProfileById(profileId);
+        if (mapper==null){
+            throw new ItemNotFoundException("profile not found");
+        }
+        ProfileDTO dto = new ProfileDTO();
+        dto.setId(mapper.getId());
+        dto.setEmail(mapper.getEmail());
+        dto.setRole(mapper.getRole());
         return dto;
     }
 }
