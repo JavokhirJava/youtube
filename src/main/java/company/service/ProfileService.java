@@ -10,12 +10,12 @@ import company.enums.ProfileRole;
 import company.exps.AppBadRequestException;
 import company.exps.ItemNotFoundException;
 import company.exps.WrongException;
+import company.mapper.ProfileMapper;
 import company.repository.AttachRepository;
 import company.repository.ProfileRepository;
 import company.util.MD5Util;
 import company.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
@@ -67,17 +67,17 @@ public class ProfileService {
         dto.setId(entity.getId());
         return dto;
     }
-//    public ProfileDTO getProfile(Integer profileId) {
-//        ProfileMapper mapper = profileRepository.getProfileById(profileId);
-//        if (mapper==null){
-//            throw new ItemNotFoundException("profile not found");
-//        }
-//        ProfileDTO dto = new ProfileDTO();
-//        dto.setId(mapper.getId());
-//        dto.setEmail(mapper.getEmail());
-//        dto.setRole(mapper.getRole());
-//        return dto;
-//    }
+    public ProfileDTO getProfile(Integer profileId) {
+        ProfileMapper mapper = profileRepository.getProfileById(profileId);
+        if (mapper==null){
+            throw new ItemNotFoundException("profile not found");
+        }
+        ProfileDTO dto = new ProfileDTO();
+        dto.setId(mapper.getId());
+        dto.setEmail(mapper.getEmail());
+        dto.setRole(mapper.getRole());
+        return dto;
+    }
 
 
     public int attachUpdate(String id) {
