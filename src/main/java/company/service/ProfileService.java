@@ -15,7 +15,6 @@ import company.repository.ProfileRepository;
 import company.util.MD5Util;
 import company.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
