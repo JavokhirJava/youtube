@@ -35,6 +35,8 @@ public class ProfileService {
     private AttachService attachService;
     @Autowired
     private AttachRepository attachRepository;
+
+
     public ProfileEntity toEntity(ProfileDTO profileDTO) {
         ProfileEntity entity = new ProfileEntity();
         entity.setName(profileDTO.getName());
@@ -102,14 +104,14 @@ public class ProfileService {
 
 
 
-    public Boolean updateEmail(ChangeEmailDTO dto,Integer adminId) {
+    public Boolean updateEmail(ChangeEmailDTO dto) {
         Optional<ProfileEntity> entity = profileRepository.findByEmail(dto.getOldEmail());
         if (entity == null){
             throw new ItemNotFoundException("Not found");
         }
         ProfileEntity profileEntity = get(dto.getId());
         profileEntity.setEmail(dto.getNewEmail());
-        profileEntity.setPrtId(adminId);
+        profileEntity.setPrtId(SpringSecurityUtil.getProfileId());
         profileRepository.save(profileEntity);
         return true;
     }
@@ -133,11 +135,6 @@ public class ProfileService {
             dtoList.add(dto);
         }
         return new PageImpl<ProfileDTO>(dtoList, paging, totalCount);
-    }
-
-    public int updateUser(ProfileDTO profileDTO) {
-        return profileRepository.updateUserById(profileDTO.getName(),
-                profileDTO.getSurname(), SpringSecurityUtil.getProfileId());
     }
 
     public ChangeDTO changePassword(ChangeDTO dto) {
