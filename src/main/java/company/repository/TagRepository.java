@@ -1,6 +1,6 @@
-package com.repository;
+package company.repository;
 
-import com.entity.TagEntity;
+import company.entity.TagEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

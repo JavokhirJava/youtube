@@ -1,12 +1,12 @@
-package com.service;
+package company.service;
 
 import com.dto.TagRequestDTO;
-import com.dto.tag.TagDTO;
-import com.entity.TagEntity;
-import com.exps.AppBadRequestException;
-import com.exps.ItemNotFoundException;
-import com.repository.TagRepository;
-import com.util.SpringSecurityUtil;
+import company.dto.tag.TagDTO;
+import company.entity.TagEntity;
+import company.exps.AppBadRequestException;
+import company.exps.ItemNotFoundException;
+import company.repository.TagRepository;
+import company.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,6 @@ import java.util.Optional;
             TagEntity entity = new TagEntity();
             TagDTO tagDTO = new TagDTO();
             entity.setName(dto.getName());
-            entity.setId(SpringSecurityUtil.getProfileId());
             tagRepository.save(entity);
             tagDTO.setId(entity.getId());
             tagDTO.setName(dto.getName());
@@ -38,7 +37,6 @@ import java.util.Optional;
             }
             TagEntity entity = optional.get();
             entity.setName(dto.getName());
-            entity.setId(SpringSecurityUtil.getProfileId());
             tagRepository.save(entity);
             tagDTO.setName(entity.getName());
             tagDTO.setId(entity.getId());

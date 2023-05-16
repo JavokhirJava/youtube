@@ -1,15 +1,10 @@
-package com.controller;
+package company.controller;
 
 import com.dto.TagRequestDTO;
-import com.dto.jwt.JwtDTO;
-import com.dto.tag.TagDTO;
-import com.enums.ProfileRole;
-import com.exps.MethodNotAllowedException;
-import com.service.TagService;
-import com.util.JwtUtil;
+import company.dto.tag.TagDTO;
+import company.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,13 +31,8 @@ public class TagController {
 
 
     @GetMapping(value = "/public/list")
-    public ResponseEntity<List<TagDTO>> getList(@RequestHeader("Authorization") String authorization) {
-        String[] str = authorization.split(" ");
-        String jwt = str[1];
-        JwtDTO jwtDTO = JwtUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ROLE_ADMIN)) {
-            throw new MethodNotAllowedException("Method not allowed");
-        }
+    public ResponseEntity<List<TagDTO>> getList() {
+
         List<TagDTO> response = tagService.getList();
         return ResponseEntity.ok(response);
     }
