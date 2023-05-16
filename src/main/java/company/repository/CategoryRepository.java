@@ -1,6 +1,6 @@
-package com.repository;
+package company.repository;
 
-import com.entity.CategoryEntity;
+import company.entity.CategoryEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 @Transactional

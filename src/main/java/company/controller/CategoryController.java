@@ -1,11 +1,8 @@
-package com.controller;
+package company.controller;
 
-import com.dto.category.CategoryDTO;
-import com.dto.jwt.JwtDTO;
-import com.enums.ProfileRole;
-import com.exps.MethodNotAllowedException;
-import com.service.CategoryService;
-import com.util.JwtUtil;
+
+import company.dto.category.CategoryDTO;
+import company.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,18 +15,18 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @PostMapping("adm/private/create")
-    public ResponseEntity<CategoryDTO> create(@RequestBody @Valid CategoryDTO dto) {
+    @PostMapping("/adm/create")
+    public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO dto) {
         return ResponseEntity.ok(categoryService.create(dto));
     }
 
-    @PutMapping("adm/update/{id}")
+    @PutMapping("/adm/update/{id}")
     public ResponseEntity<CategoryDTO> update(@PathVariable("id") Integer id,
                                               @RequestBody CategoryDTO categoryDto) {
         return ResponseEntity.ok(categoryService.update(id, categoryDto));
     }
 
-    @DeleteMapping("adm/delete/{id}")
+    @DeleteMapping("/adm/delete/{id}")
     public ResponseEntity<Boolean> deleteById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(categoryService.deleteById(id));
     }

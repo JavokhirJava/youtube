@@ -1,11 +1,10 @@
-package com.service;
+package company.service;
 
-import com.dto.category.CategoryDTO;
-import com.entity.CategoryEntity;
-import com.exps.AppBadRequestException;
-import com.exps.ItemNotFoundException;
-import com.repository.CategoryRepository;
-import com.util.SpringSecurityUtil;
+import company.dto.category.CategoryDTO;
+import company.entity.CategoryEntity;
+import company.exps.AppBadRequestException;
+import company.repository.CategoryRepository;
+import company.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +18,9 @@ public class CategoryService {
     private CategoryRepository categoryRepository;
 
     public CategoryDTO create(CategoryDTO dto) {
-        CategoryEntity entity = new CategoryEntity();
+         CategoryEntity entity = new CategoryEntity();
         entity.setName(dto.getName());
         categoryRepository.save(entity);
-        dto.setCreatedDate(entity.getCreatedDate());
         dto.setId(entity.getId());
         return dto;
     }
@@ -35,7 +33,6 @@ public class CategoryService {
         CategoryEntity entity = optional.get();
         entity.setName(dto.getName());
         categoryRepository.save(entity);
-        dto.setCreatedDate(entity.getCreatedDate());
         dto.setId(entity.getId());
         return dto;
     }
@@ -60,7 +57,6 @@ public class CategoryService {
             CategoryDTO dto = new CategoryDTO();
             dto.setId(entity.getId());
             dto.setName(entity.getName());
-            dto.setCreatedDate(entity.getCreatedDate());
             dtoList.add(dto);
         }
         return dtoList;
