@@ -30,7 +30,7 @@ public class ProfileEntity {
     private String attachId;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attach_id",insertable=false, updatable=false)
-    private AttachEntity attachEntity;
+    private AttachEntity photo;
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private GeneralStatus status;

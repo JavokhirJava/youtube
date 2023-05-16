@@ -1,5 +1,8 @@
 package company.enums;
 
+
+
 public enum GeneralStatus {
-    ACTIVE, REGISTER, BLOCK
+    ACTIVE, REGISTER, BLOCK,NOT_ACTIVE;
+
 }

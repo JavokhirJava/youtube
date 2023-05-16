@@ -4,6 +4,7 @@ import company.dto.jwt.JwtDTO;
 import company.enums.ProfileRole;
 import company.exps.MethodNotAllowedException;
 import io.jsonwebtoken.*;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.Date;
 
@@ -24,7 +25,7 @@ public class JwtUtil {
         return jwtBuilder.compact();
     }
 
-    public static String encode(String text) {
+    public static String encode(String text) { //todo
         JwtBuilder jwtBuilder = Jwts.builder();
         jwtBuilder.setIssuedAt(new Date());
         jwtBuilder.signWith(SignatureAlgorithm.HS512, secretKey);
@@ -56,4 +57,17 @@ public class JwtUtil {
         throw new MethodNotAllowedException("Jwt exception");
     }
 
+    public static void checkForRequiredRole(HttpServletRequest request, ProfileRole... roleList) {
+        ProfileRole jwtRole = (ProfileRole) request.getAttribute("role");
+        boolean roleFound = false;
+        for (ProfileRole role : roleList) {
+            if (jwtRole.equals(role)) {
+                roleFound = true;
+                break;
+            }
+        }
+        if (!roleFound) {
+            throw new MethodNotAllowedException("Method not allowed");
+        }
+    }
 }
