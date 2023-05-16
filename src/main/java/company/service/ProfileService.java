@@ -1,5 +1,6 @@
 package company.service;
 
+import company.dto.ChangeDTO;
 import company.dto.ChangeEmailDTO;
 import company.dto.ProfileDTO;
 import company.entity.AttachEntity;
@@ -103,14 +104,14 @@ public class ProfileService {
 
 
 
-    public Boolean updateEmail(ChangeEmailDTO dto,Integer adminId) {
+    public Boolean updateEmail(ChangeEmailDTO dto) {
         Optional<ProfileEntity> entity = profileRepository.findByEmail(dto.getOldEmail());
         if (entity == null){
             throw new ItemNotFoundException("Not found");
         }
         ProfileEntity profileEntity = get(dto.getId());
         profileEntity.setEmail(dto.getNewEmail());
-        profileEntity.setPrtId(adminId);
+        profileEntity.setPrtId(SpringSecurityUtil.getProfileId());
         profileRepository.save(profileEntity);
         return true;
     }
@@ -134,5 +135,17 @@ public class ProfileService {
             dtoList.add(dto);
         }
         return new PageImpl<ProfileDTO>(dtoList, paging, totalCount);
+    }
+
+    public ChangeDTO changePassword(ChangeDTO dto) {
+        ProfileEntity exists = profileRepository.findByPassword(MD5Util.encode(dto.getOldPassword()));
+        if (exists == null){
+            throw new ItemNotFoundException("Not found");
+        }
+        int b = profileRepository.updatePassword(exists.getId(),MD5Util.encode(dto.getNewPassword()));
+        if (b == 0){
+            throw new WrongException("Error");
+        }
+        return dto;
     }
 }
