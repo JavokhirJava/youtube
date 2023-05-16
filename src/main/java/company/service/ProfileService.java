@@ -1,6 +1,5 @@
 package company.service;
 
-import company.dto.ChangeDTO;
 import company.dto.ChangeEmailDTO;
 import company.dto.ProfileDTO;
 import company.entity.AttachEntity;
@@ -10,6 +9,7 @@ import company.enums.ProfileRole;
 import company.exps.AppBadRequestException;
 import company.exps.ItemNotFoundException;
 import company.exps.WrongException;
+import company.mapper.ProfileMapper;
 import company.repository.AttachRepository;
 import company.repository.ProfileRepository;
 import company.util.MD5Util;
@@ -35,6 +35,8 @@ public class ProfileService {
     private AttachService attachService;
     @Autowired
     private AttachRepository attachRepository;
+
+
     public ProfileEntity toEntity(ProfileDTO profileDTO) {
         ProfileEntity entity = new ProfileEntity();
         entity.setName(profileDTO.getName());
@@ -67,17 +69,17 @@ public class ProfileService {
         dto.setId(entity.getId());
         return dto;
     }
-//    public ProfileDTO getProfile(Integer profileId) {
-//        ProfileMapper mapper = profileRepository.getProfileById(profileId);
-//        if (mapper==null){
-//            throw new ItemNotFoundException("profile not found");
-//        }
-//        ProfileDTO dto = new ProfileDTO();
-//        dto.setId(mapper.getId());
-//        dto.setEmail(mapper.getEmail());
-//        dto.setRole(mapper.getRole());
-//        return dto;
-//    }
+    public ProfileDTO getProfile(Integer profileId) {
+        ProfileMapper mapper = profileRepository.getProfileById(profileId);
+        if (mapper==null){
+            throw new ItemNotFoundException("profile not found");
+        }
+        ProfileDTO dto = new ProfileDTO();
+        dto.setId(mapper.getId());
+        dto.setEmail(mapper.getEmail());
+        dto.setRole(mapper.getRole());
+        return dto;
+    }
 
 
     public int attachUpdate(String id) {
@@ -133,22 +135,5 @@ public class ProfileService {
             dtoList.add(dto);
         }
         return new PageImpl<ProfileDTO>(dtoList, paging, totalCount);
-    }
-
-    public int updateUser(ProfileDTO profileDTO) {
-        return profileRepository.updateUserById(profileDTO.getName(),
-                profileDTO.getSurname(), SpringSecurityUtil.getProfileId());
-    }
-
-    public ChangeDTO changePassword(ChangeDTO dto) {
-        ProfileEntity exists = profileRepository.findByPassword(MD5Util.encode(dto.getOldPassword()));
-        if (exists == null){
-            throw new ItemNotFoundException("Not found");
-        }
-        int b = profileRepository.updatePassword(exists.getId(),MD5Util.encode(dto.getNewPassword()));
-        if (b == 0){
-            throw new WrongException("Error");
-        }
-        return dto;
     }
 }

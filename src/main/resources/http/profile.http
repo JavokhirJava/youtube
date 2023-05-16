@@ -1,5 +1,5 @@
 ### Create profle
-POST localhost:8080/api/v1/profile/adm-moder/create
+POST localhost:8081/api/v1/profile/adm-moder/create
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyMzEyMjUsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0MzE3NjI1LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.72xiqKZ_iyWy7uAlhVn70nxdPHDc_KPKbjLisGYNDS3Vkmkfh5UwwH3LBQIgUl7fkBOny_sB8uaoZC90pi6_Sw
 Content-Type:  application/json
 
@@ -10,19 +10,10 @@ Content-Type:  application/json
   "email": "AliyevVali@gmail.com"
 }
 ### change paswword
-PUT localhost:8080/api/v1/profile/changePassworp
+POST localhost:8081/profile/change
 Content-Type: application/json
 
 {
   "oldPassword": "88888",
   "newPassword": "99999"
-}
-
-### update profile detail
-PUT localhost:8080/api/v1/profile/update
-Content-Type: application/json
-
-{
-  "name": "Dakejon",
-  "surname": "Nurlanovic"
 }
