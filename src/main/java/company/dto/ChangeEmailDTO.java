@@ -10,6 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ChangeEmailDTO {
+    private  Integer id;
     @NotBlank
     @Size(min = 4, message = "Old Email is required")
     private String oldEmail;

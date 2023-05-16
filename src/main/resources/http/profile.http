@@ -9,3 +9,11 @@ Content-Type:  application/json
   "password": "202020",
   "email": "AliyevVali@gmail.com"
 }
+### change paswword
+POST localhost:8081/profile/change
+Content-Type: application/json
+
+{
+  "oldPassword": "88888",
+  "newPassword": "99999"
+}
