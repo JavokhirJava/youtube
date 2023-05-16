@@ -105,14 +105,14 @@ public class ProfileService {
 
 
 
-    public Boolean updateEmail(ChangeEmailDTO dto,Integer adminId) {
+    public Boolean updateEmail(ChangeEmailDTO dto) {
         Optional<ProfileEntity> entity = profileRepository.findByEmail(dto.getOldEmail());
         if (entity == null){
             throw new ItemNotFoundException("Not found");
         }
         ProfileEntity profileEntity = get(dto.getId());
         profileEntity.setEmail(dto.getNewEmail());
-        profileEntity.setPrtId(adminId);
+        profileEntity.setPrtId(SpringSecurityUtil.getProfileId());
         profileRepository.save(profileEntity);
         return true;
     }

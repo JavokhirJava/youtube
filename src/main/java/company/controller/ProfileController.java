@@ -24,26 +24,21 @@ public class ProfileController {
 
     @PostMapping("/adm-moder/create")
     public ResponseEntity<ProfileDTO> save(@RequestBody @Valid ProfileDTO profileDTO) {
-        return ResponseEntity.ok(profileService.create(profileDTO));//todo
+        return ResponseEntity.ok(profileService.create(profileDTO));
     }
 
     @PutMapping("/update/attach")
     public ResponseEntity<?> attachUpdate(@RequestParam("id") String id) {
         return ResponseEntity.ok(profileService.attachUpdate(id));
     }
-    @PutMapping("/private/admin/update-email")
-    public ResponseEntity<Boolean> changeEmail(@Valid @RequestBody ChangeEmailDTO dto,
-                                               HttpServletRequest request) {
-        JwtUtil.checkForRequiredRole(request, ProfileRole.ROLE_ADMIN);
-        Integer prtId = (Integer) request.getAttribute("id");
-        Boolean update = profileService.updateEmail(dto, prtId);
+    @PutMapping("/adm/update-email")
+    public ResponseEntity<Boolean> changeEmail(@Valid @RequestBody ChangeEmailDTO dto) {
+        Boolean update = profileService.updateEmail(dto);
         return ResponseEntity.ok(update);
     }
-    @GetMapping("/private/admin/profile-Detail")
+    @GetMapping("/adm/profile-Detail")
     public ResponseEntity<Page<ProfileDTO>> getAllProfileDetails(@RequestParam(value = "page", defaultValue = "1") int page,
-                                                  @RequestParam(value = "size", defaultValue = "2") int size,
-                                                  HttpServletRequest request) {
-        JwtUtil.checkForRequiredRole(request, ProfileRole.ROLE_ADMIN);
+                                                  @RequestParam(value = "size", defaultValue = "2") int size) {
         return ResponseEntity.ok(profileService.getProfileDetail(page, size));
     }
     @PostMapping("/changePassword")
