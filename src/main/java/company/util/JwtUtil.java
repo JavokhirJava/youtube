@@ -21,7 +21,7 @@ public class JwtUtil {
         jwtBuilder.claim("role", role);
 
         jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (tokenLiveTime)));
-        jwtBuilder.setIssuer("Kun uz test portali");
+        jwtBuilder.setIssuer("youtube test portali");
         return jwtBuilder.compact();
     }
 
@@ -31,7 +31,7 @@ public class JwtUtil {
         jwtBuilder.signWith(SignatureAlgorithm.HS512, secretKey);
         jwtBuilder.claim("email", text);
         jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (tokenLiveTime)));
-        jwtBuilder.setIssuer("Kunuz test portali");
+        jwtBuilder.setIssuer("youtube test portali");
         return jwtBuilder.compact();
     }
     public static JwtDTO decode(String token) {

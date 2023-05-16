@@ -11,7 +11,7 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
-@ToString
+
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -25,11 +25,7 @@ public class ProfileDTO {
     @Size(min = 4,max = 20,message = "Password must contain 4 characters")
     private String password;
     private String email;
-    private Boolean visible;
-    private ProfileRole role;
     private LocalDateTime createdDate;
-    private LocalDateTime updateDate;
     private String photoId;
     private GeneralStatus status;
-    private String jwt;
 }

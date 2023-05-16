@@ -6,6 +6,7 @@ import company.dto.ProfileDTO;
 import company.enums.ProfileRole;
 import company.service.ProfileService;
 import company.util.JwtUtil;
+import company.util.SpringSecurityUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,8 @@ import static company.enums.ProfileRole.ROLE_MODERATOR;
 public class ProfileController {
     @Autowired
     private ProfileService profileService;
-
-    @PostMapping({ "/admin/create"})
-    public ResponseEntity<ProfileDTO> save(@Valid @RequestBody ProfileDTO profileDTO,
-                                           HttpServletRequest request) {
-        JwtUtil.checkForRequiredRole(request, ProfileRole.ROLE_ADMIN,ROLE_MODERATOR);
-        Integer prtId = (Integer) request.getAttribute("id");
-        return ResponseEntity.ok(profileService.create(profileDTO, prtId));
+    @PostMapping( "/adm-moder/create")
+    public ResponseEntity<ProfileDTO> save(@RequestBody @Valid ProfileDTO profileDTO) {
+        return ResponseEntity.ok(profileService.create(profileDTO));
     }
-
-
 }

@@ -63,8 +63,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .requestMatchers("/api/v1/*/adm/**").hasRole("ADMIN")
-                .requestMatchers("/api/v1/article/role/**").hasAnyRole("PUBLISHER","MODERATOR")
-                .requestMatchers(HttpMethod.PUT, "/api/v1/article/private/update").hasAnyRole("ADMIN", "MODERATOR")
+                .requestMatchers("/api/v1/*/adm-moder/**").hasAnyRole("MODERATOR","ADMIN")
+                .requestMatchers("/api/v1/*/user/**").hasRole("USER")
                 .anyRequest()
                 .authenticated();
         return http.build();
