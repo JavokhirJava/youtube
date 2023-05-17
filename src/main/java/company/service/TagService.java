@@ -44,11 +44,11 @@ import java.util.Optional;
         }
 
         public boolean delete(Integer id) {
-            Optional<TagEntity> byId = tagRepository.findById(id);
-            if (byId.isEmpty()) {
+            Optional<TagEntity> optional = tagRepository.findById(id);
+            if (optional.isEmpty()) {
                 throw new ItemNotFoundException("Tag not found");
             }
-            tagRepository.updateTag(id, SpringSecurityUtil.getProfileId());
+            tagRepository.delete(optional.get());
             return true;
         }
 

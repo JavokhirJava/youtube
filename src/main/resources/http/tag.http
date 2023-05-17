@@ -8,22 +8,20 @@ Content-Type:  application/json
 
 
 ### Update tag
-PUT localhost:8081/api/v1/tag/update/1
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODMxODk0OTQsImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODMyNzU4OTQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.lFmT5mMe8FiVJ4DZncN_VzBnCE5kGTgYSM2rJZshVVCkafw0ap0Iz06snMZz-lz9ftNOqt-fEs5Lh_ybi_JMwQ
+PUT localhost:8081/api/v1/tag/adm/update/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyNDEyNzksImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0MzI3Njc5LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.dvEKJiwZhAhsEcEbztNHM1hH3e7nC0FYNIJencxPT41kVAebLYtWH55zE1CS_PMp1cFi65-nZ-DJ7T7C6cVy0Q
 Content-Type:  application/json
 
 {
-  "id": 5,
-  "name": "#sport2"
+  "name": "sport2"
 }
 
 
 
 ### Delete tag byId
-DELETE localhost:8081/api/v1/tag/delete/1
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODMxODk0OTQsImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODMyNzU4OTQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.lFmT5mMe8FiVJ4DZncN_VzBnCE5kGTgYSM2rJZshVVCkafw0ap0Iz06snMZz-lz9ftNOqt-fEs5Lh_ybi_JMwQ
-
+DELETE localhost:8081/api/v1/tag/adm/delete/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyNDEyNzksImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0MzI3Njc5LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.dvEKJiwZhAhsEcEbztNHM1hH3e7nC0FYNIJencxPT41kVAebLYtWH55zE1CS_PMp1cFi65-nZ-DJ7T7C6cVy0Q
 
 ### Region List
-GET localhost:8081/api/v1/tag/list
+GET localhost:8081/api/v1/tag/public/list
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODMxODk0OTQsImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODMyNzU4OTQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.lFmT5mMe8FiVJ4DZncN_VzBnCE5kGTgYSM2rJZshVVCkafw0ap0Iz06snMZz-lz9ftNOqt-fEs5Lh_ybi_JMwQ
