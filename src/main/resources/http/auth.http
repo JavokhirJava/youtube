@@ -1,5 +1,6 @@
 ### Login
 POST localhost:8081/api/v1/auth
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyNDEyNzksImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0MzI3Njc5LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.dvEKJiwZhAhsEcEbztNHM1hH3e7nC0FYNIJencxPT41kVAebLYtWH55zE1CS_PMp1cFi65-nZ-DJ7T7C6cVy0Q
 Content-Type:  application/json
 
 {
