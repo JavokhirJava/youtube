@@ -128,19 +128,19 @@
 
 ---------------
 7. Video
-    1. Create Video (USER)
+  //  1. Create Video (USER)
     2. Update Video Detail (USER and OWNER)
-    3. Change Video Status (USER and OWNER)
+  //    3. Change Video Status (USER and OWNER)
     4. Increase video_view Count by id
-    5. Get Video Pagination by CategoryId
+ //     5. Get Video Pagination by CategoryId
         VideShortInfo
     6. Search video by Title
         VideShortInfo
-    7. Get video by tag_id with pagination
+ //     7. Get video by tag_id with pagination
             VideShortInfo
     8. Get Video By id (If Status PRIVATE allow only for OWNER or ADMIN)
         VideFullInfo
-    9. Get Video List Pagination (ADMIN)
+  //    9. Get Video List Pagination (ADMIN)
         (VideShortInfo + owner (is,name,surname) + playlist (id,name))
     10. Get Channel Video List Pagination (created_date desc)
          VidePlayListInfo
