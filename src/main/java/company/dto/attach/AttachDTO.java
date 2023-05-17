@@ -1,5 +1,6 @@
 package company.dto.attach;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import java.time.LocalTime;
 
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AttachDTO {
     @NotNull(message = "id required")
     private String id;

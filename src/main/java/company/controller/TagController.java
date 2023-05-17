@@ -1,6 +1,6 @@
 package company.controller;
 
-import com.dto.TagRequestDTO;
+import company.dto.tag.TagRequestDTO;
 import company.dto.tag.TagDTO;
 import company.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;

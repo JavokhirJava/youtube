@@ -1,4 +1,4 @@
-package company.dto;
+package company.dto.profile;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import company.enums.GeneralStatus;

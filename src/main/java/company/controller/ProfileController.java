@@ -1,9 +1,8 @@
 package company.controller;
 
-import company.dto.ChangeDTO;
-import company.dto.ChangeEmailDTO;
-import company.dto.ProfileDTO;
-import company.enums.ProfileRole;
+import company.dto.profile.ChangeDTO;
+import company.dto.profile.ChangeEmailDTO;
+import company.dto.profile.ProfileDTO;
 import company.service.ProfileService;
 import company.util.JwtUtil;
 import company.util.SpringSecurityUtil;
@@ -32,19 +31,16 @@ public class ProfileController {
     public ResponseEntity<?> attachUpdate(@RequestParam("id") String id) {
         return ResponseEntity.ok(profileService.attachUpdate(id));
     }
-
     @PutMapping("/adm/update-email")
     public ResponseEntity<Boolean> changeEmail(@Valid @RequestBody ChangeEmailDTO dto) {
         Boolean update = profileService.updateEmail(dto);
         return ResponseEntity.ok(update);
     }
-
     @GetMapping("/adm/profile-Detail")
     public ResponseEntity<Page<ProfileDTO>> getAllProfileDetails(@RequestParam(value = "page", defaultValue = "1") int page,
                                                                  @RequestParam(value = "size", defaultValue = "2") int size) {
         return ResponseEntity.ok(profileService.getProfileDetail(page, size));
     }
-
     @PostMapping("/changePassword")
     public ResponseEntity<ChangeDTO> changePassword(@Valid @RequestBody ChangeDTO dto) {
         Integer profilId = SpringSecurityUtil.getProfileId();

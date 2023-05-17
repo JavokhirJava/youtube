@@ -165,4 +165,13 @@ public class AttachService {
         attachRepository.deleteById(id);
         return true;
     }
+
+    public AttachDTO getPhotoBanner(String bannerId) {
+        AttachEntity entity = get(bannerId);
+        AttachDTO dto = new AttachDTO();
+        dto.setOriginalName(entity.getOriginalName());
+        dto.setPath(entity.getPath());
+        dto.setExtension(entity.getExtension());
+        return dto;
+    }
 }

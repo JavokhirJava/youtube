@@ -1,9 +1,57 @@
 ### Create channel
 POST localhost:8081/api/v1/channel/user
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMjMyODUsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDA5Njg1LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.tWbxJMWcOx3SuhIU_cRJIEyU1l_vd5UjNlCUgVym4TuEuwzJc4whu9oVa0lG4aUsxsDKmmV79jV2LVciLorfzg
+Content-Type:  application/json
+
+{
+  "name": "Code_UZ",
+  "description": "Best Channel"
+}
+
+### Update channel
+PUT localhost:8081/api/v1/channel/user/update
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyMzQ5MTgsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0MzIxMzE4LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.OWEmJ1qoxMwW8lHUeQ34-Y5SOvnBGbaYPX0xbW4rKPYyuLoc8oQDZigPMb5GUHfYV66BzJtLeBsgeyT2OyF89w
 Content-Type:  application/json
 
 {
-  "name": "Code_Uz",
+  "id": "d8fb7e7b-f8b0-42a2-a4ff-29f49f4c9b23",
+  "name": "Code_Uz1",
   "description": "Best Channel"
 }
+### Update channel photo
+PUT localhost:8081/api/v1/channel/user/photo
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyMzQ5MTgsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0MzIxMzE4LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.OWEmJ1qoxMwW8lHUeQ34-Y5SOvnBGbaYPX0xbW4rKPYyuLoc8oQDZigPMb5GUHfYV66BzJtLeBsgeyT2OyF89w
+Content-Type:  application/json
+
+{
+  "id": "d8fb7e7b-f8b0-42a2-a4ff-29f49f4c9b23",
+  "photoId": "f8d3fb8e-a24d-4e9c-97d5-2a2c6cff43a9"
+}
+
+### Update channel banner
+PUT localhost:8081/api/v1/channel/user/banner
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyMzQ5MTgsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0MzIxMzE4LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.OWEmJ1qoxMwW8lHUeQ34-Y5SOvnBGbaYPX0xbW4rKPYyuLoc8oQDZigPMb5GUHfYV66BzJtLeBsgeyT2OyF89w
+Content-Type:  application/json
+
+{
+  "id": "d8fb7e7b-f8b0-42a2-a4ff-29f49f4c9b23",
+  "bannerId": "f8d3fb8e-a24d-4e9c-97d5-2a2c6cff43a9"
+}
+
+###Pagination (Admin)
+GET  localhost:8081/api/v1/channel/adm/pagination?page=1&size=3
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMjAxMTksImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDA2NTE5LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.NBrmu2RsMAOxmh8QBI_obrROFcPQe0D28DYUg9ffNDL6XXgNeyIIcCqG1bzWRjJWnjpmLLcimSp-lsnkQLrA-w
+###GetByID
+GET  localhost:8081/api/v1/channel/public/get_by_id?id=d8fb7e7b-f8b0-42a2-a4ff-29f49f4c9b23
+###Change Status
+PUT Localhost:8081/api/v1/channel/adm-user/change_status
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMjAxMTksImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDA2NTE5LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.NBrmu2RsMAOxmh8QBI_obrROFcPQe0D28DYUg9ffNDL6XXgNeyIIcCqG1bzWRjJWnjpmLLcimSp-lsnkQLrA-w
+Content-Type: application/json
+
+{
+  "id": "d8fb7e7b-f8b0-42a2-a4ff-29f49f4c9b23",
+  "status": "ACTIVE"
+}
+###User Channel List
+GET localhost:8081/api/v1/channel/private/channel_list
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMjMyODUsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDA5Njg1LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.tWbxJMWcOx3SuhIU_cRJIEyU1l_vd5UjNlCUgVym4TuEuwzJc4whu9oVa0lG4aUsxsDKmmV79jV2LVciLorfzg

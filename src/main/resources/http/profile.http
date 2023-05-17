@@ -10,7 +10,7 @@ Content-Type:  application/json
   "email": "AliyevVali@gmail.com"
 }
 ### change paswword
-PUT localhost:8081/api/v1/profile/changePassworp
+POST localhost:8081/api/v1/profile/changePassword
 Content-Type: application/json
 
 {

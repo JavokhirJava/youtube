@@ -1,8 +1,8 @@
 package company.service;
 
-import company.dto.ChangeDTO;
-import company.dto.ChangeEmailDTO;
-import company.dto.ProfileDTO;
+import company.dto.profile.ChangeDTO;
+import company.dto.profile.ChangeEmailDTO;
+import company.dto.profile.ProfileDTO;
 import company.entity.AttachEntity;
 import company.entity.ProfileEntity;
 import company.enums.GeneralStatus;
