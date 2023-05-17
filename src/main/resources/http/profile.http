@@ -1,6 +1,6 @@
 ### Create profle
 POST localhost:8081/api/v1/profile/adm-moder/create
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyMzEyMjUsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0MzE3NjI1LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.72xiqKZ_iyWy7uAlhVn70nxdPHDc_KPKbjLisGYNDS3Vkmkfh5UwwH3LBQIgUl7fkBOny_sB8uaoZC90pi6_Sw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyNDc0ODIsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0MzMzODgzLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.O_U45Znho5qtlQXV8N8tqpTNteid0O8uGEWqnjHF3avgQORx2CEotUa5jguS17uzkTkwMn_91nJaygYWtovBfg
 Content-Type:  application/json
 
 {
@@ -9,10 +9,8 @@ Content-Type:  application/json
   "password": "202020",
   "email": "AliyevVali@gmail.com"
 }
-
-
 ### change paswword
-PUT localhost:8081/api
+PUT localhost:8081/api/v1/profile/changePassworp
 Content-Type: application/json
 
 {
@@ -20,8 +18,11 @@ Content-Type: application/json
   "newPassword": "99999"
 }
 
-
-
-### get all
-GET localhost:8081/api/v1/profile/private/admin/profile-Detail
+### update profile detail
+PUT localhost:8080/api/v1/profile/update
 Content-Type: application/json
+
+{
+  "name": "Dakejon",
+  "surname": "Nurlanovic"
+}

@@ -6,6 +6,7 @@ import company.dto.ProfileDTO;
 import company.enums.ProfileRole;
 import company.service.ProfileService;
 import company.util.JwtUtil;
+import company.util.SpringSecurityUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,19 +32,23 @@ public class ProfileController {
     public ResponseEntity<?> attachUpdate(@RequestParam("id") String id) {
         return ResponseEntity.ok(profileService.attachUpdate(id));
     }
+
     @PutMapping("/adm/update-email")
     public ResponseEntity<Boolean> changeEmail(@Valid @RequestBody ChangeEmailDTO dto) {
         Boolean update = profileService.updateEmail(dto);
         return ResponseEntity.ok(update);
     }
+
     @GetMapping("/adm/profile-Detail")
     public ResponseEntity<Page<ProfileDTO>> getAllProfileDetails(@RequestParam(value = "page", defaultValue = "1") int page,
-                                                  @RequestParam(value = "size", defaultValue = "2") int size) {
+                                                                 @RequestParam(value = "size", defaultValue = "2") int size) {
         return ResponseEntity.ok(profileService.getProfileDetail(page, size));
     }
+
     @PostMapping("/changePassword")
     public ResponseEntity<ChangeDTO> changePassword(@Valid @RequestBody ChangeDTO dto) {
-        ChangeDTO response = profileService.changePassword(dto);
+        Integer profilId = SpringSecurityUtil.getProfileId();
+            ChangeDTO response = profileService.changePassword(dto,profilId);
         return ResponseEntity.ok(response);
     }
 }
