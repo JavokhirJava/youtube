@@ -3,7 +3,7 @@ POST localhost:8081/api/v1/tag/public
 Content-Type:  application/json
 
 {
-  "name": "#sport"
+  "name": "#sport1"
 }
 
 

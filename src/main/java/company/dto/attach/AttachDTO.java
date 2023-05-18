@@ -8,9 +8,8 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
-@Getter
 @Setter
+@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AttachDTO {
     @NotNull(message = "id required")

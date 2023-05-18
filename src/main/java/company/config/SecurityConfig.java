@@ -66,6 +66,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/v1/*/adm-moder/**").hasAnyRole("MODERATOR","ADMIN")
                 .requestMatchers("/api/v1/*/adm-user/**").hasAnyRole("USER","ADMIN")
                 .requestMatchers("/api/v1/*/user/**").hasRole("USER")
+                .requestMatchers("/api/v1/*/user/*").hasRole("USER")
                 .anyRequest()
                 .authenticated();
         return http.build();
