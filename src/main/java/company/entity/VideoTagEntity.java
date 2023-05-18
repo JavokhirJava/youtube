@@ -23,6 +23,11 @@ public class VideoTagEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tag_id",insertable=false, updatable=false)
     private TagEntity tag;
+    @Column(name = "profile_id")
+    private Integer profileId;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "profile_id",insertable=false, updatable=false)
+    private ProfileEntity profile;
     @Column(name = "created_date")
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDate=LocalDateTime.now();
 }
