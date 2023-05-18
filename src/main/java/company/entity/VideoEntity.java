@@ -1,5 +1,6 @@
 package company.entity;
 
+import company.dto.channel.ChannelDTO;
 import company.enums.GeneralStatus;
 import company.enums.TypeEnums;
 import jakarta.persistence.*;
@@ -7,10 +8,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-@Getter
+
 @Setter
-@Entity
+@Getter
 @Table(name = "video")
+@Entity
 public class VideoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -32,26 +34,29 @@ public class VideoEntity {
     private AttachEntity previewAttach;
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private GeneralStatus status;
+    private GeneralStatus status = GeneralStatus.PUBLIC;
     @Column(name = "published_date")
     private LocalDateTime publishedDate;
     @Column(name = "created_date")
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDate = LocalDateTime.now();
     @Column(name = "view_count")
-    private Integer viewCount;
+    private Integer viewCount=0;
     @Column(name = "like_count")
-    private Integer likeCount;
+    private Integer likeCount=0;
     @Column(name = "dislike_count")
-    private Integer dislikeCount;
+    private Integer dislikeCount=0;
     @Column(name = "shared_count")
-    private Integer sharedCount;
+    private Integer sharedCount=0;
     @Column(name = "description")
     private String description;
+    @Column(name = "channel_id")
+    private String channelId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "attach_id", insertable = false, updatable = false)
-    private ChannelEntity channelId;
+    @JoinColumn(name = "channel_id", insertable = false, updatable = false)
+    private ChannelEntity channel;
     @Column(name = "title")
     private String title;
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private TypeEnums type;
 }

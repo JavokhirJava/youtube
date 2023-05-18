@@ -1,0 +1,40 @@
+### Create video
+POST localhost:8081/api/v1/video/user/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0MDA5MzUsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDg3MzM1LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.qEtrJbiHwc6oOkYJeLTP4JEEq3YyQpVjNZh7bEcK0LOwt5m9G-uvkKQ35d8-zbVbsQ-tgCOdUG4_tfnePeqU2g
+Content-Type:  application/json
+
+{
+  "categoryId": 1,
+  "attachId": "c6e79cb9-64e7-47fd-95ce-1c74f863d61b",
+  "description": "asasa",
+  "title": "asa",
+  "type": "VIDEO",
+  "channelId": "ebeadcd8-c6e2-4458-b20b-863a375f386d",
+  "priviewAttachId": "c6e79cb9-64e7-47fd-95ce-1c74f863d61b"
+}
+
+
+### Update video
+PUT localhost:8081/api/v1/video/user/update/43bf9f6d-3b39-4b14-9720-a9d4072bddce
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0MTE0NjksImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDk3ODY5LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.B3lfPlVdudFjr0E6mNITIlk2B0veEBkepyOniGdHobQxlIuzIsB3dKPkHqIIjGle17Ws2d0gP1ohjZcEMj3ZeA
+Content-Type:  application/json
+
+{
+  "categoryId": 2,
+  "description": "aaa",
+  "title": "sss",
+  "type": "SHORT",
+  "channelId": "ebeadcd8-c6e2-4458-b20b-863a375f386d",
+  "priviewAttachId": "c6e79cb9-64e7-47fd-95ce-1c74f863d61b"
+}
+
+### update status
+PUT localhost:8081/api/v1/video/user/updateStatus/43bf9f6d-3b39-4b14-9720-a9d4072bddce
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0MDA5MzUsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDg3MzM1LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.qEtrJbiHwc6oOkYJeLTP4JEEq3YyQpVjNZh7bEcK0LOwt5m9G-uvkKQ35d8-zbVbsQ-tgCOdUG4_tfnePeqU2g
+
+
+### view Count
+PUT localhost:8081/api/v1/video/public/viewCount/43bf9f6d-3b39-4b14-9720-a9d4072bddce
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0MDA5MzUsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDg3MzM1LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.qEtrJbiHwc6oOkYJeLTP4JEEq3YyQpVjNZh7bEcK0LOwt5m9G-uvkKQ35d8-zbVbsQ-tgCOdUG4_tfnePeqU2g
+
+
