@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebSecurity
 @Component
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
     @Autowired
     private UserDetailsService userDetailsService;
@@ -45,6 +47,7 @@ public class SecurityConfig {
             public String encode(CharSequence rawPassword) {
                 return rawPassword.toString();
             }
+
             @Override
             public boolean matches(CharSequence rawPassword, String encodedPassword) {
                 return MD5Util.getMd5Hash(rawPassword.toString()).equals(encodedPassword);
@@ -63,8 +66,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .requestMatchers("/api/v1/*/adm/**").hasRole("ADMIN")
-                .requestMatchers("/api/v1/*/adm-moder/**").hasAnyRole("MODERATOR","ADMIN")
-                .requestMatchers("/api/v1/*/adm-user/**").hasAnyRole("USER","ADMIN")
+                .requestMatchers("/api/v1/*/adm-moder/**").hasAnyRole("MODERATOR", "ADMIN")
+                .requestMatchers("/api/v1/*/adm-user/**").hasAnyRole("USER", "ADMIN")
                 .requestMatchers("/api/v1/*/user/**").hasRole("USER")
                 .requestMatchers("/api/v1/*/user/*").hasRole("USER")
                 .anyRequest()
