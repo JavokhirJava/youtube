@@ -1,12 +1,11 @@
 package company.service;
 
-import com.dto.TagRequestDTO;
+import company.dto.tag.TagRequestDTO;
 import company.dto.tag.TagDTO;
 import company.entity.TagEntity;
 import company.exps.AppBadRequestException;
 import company.exps.ItemNotFoundException;
 import company.repository.TagRepository;
-import company.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

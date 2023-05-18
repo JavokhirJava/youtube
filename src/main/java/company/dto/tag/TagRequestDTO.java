@@ -1,4 +1,4 @@
-package com.dto;
+package company.dto.tag;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,0 +1,39 @@
+###Create comment
+POST localhost:8081/api/v1/comment/user
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzOTE4NzgsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDc4Mjc4LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.LM8gUDn-zUpPscAXO2flq1pJCI7XGhb0NR6_TmNSl6GvFG7OZVj9OVKgrhvhODnie2PExo0ZOsjhPzmRPZI33w
+Content-Type: application/json
+
+{
+  "content": "contentga gap yo",
+  "videoId": "qeqwcecq",
+  "replyId":2
+}
+
+###Update comment
+PUT localhost:8081/api/v1/comment/user/update
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzOTE4NzgsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDc4Mjc4LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.LM8gUDn-zUpPscAXO2flq1pJCI7XGhb0NR6_TmNSl6GvFG7OZVj9OVKgrhvhODnie2PExo0ZOsjhPzmRPZI33w
+Content-Type: application/json
+
+{
+  "id": 2,
+  "content": "contenti udari"
+}
+###Delete Comment
+DELETE localhost:8081/api/v1/comment/adm-user/delete/5
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzOTE4NzgsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDc4Mjc4LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.LM8gUDn-zUpPscAXO2flq1pJCI7XGhb0NR6_TmNSl6GvFG7OZVj9OVKgrhvhODnie2PExo0ZOsjhPzmRPZI33w
+
+###Pagination (Admin)
+GET localhost:8081/api/v1/comment/adm/pagination?page=1&size=4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0MDQwNjMsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDkwNDYzLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.8zowGIIzWNJR-leLFQKSwTsv2GOKh1mXZURXI0ovYOFubhVdHGB5vkWxZmjWs-O2pnWnE4oPqyIgFkx9L6xLYw
+
+###List By Profile (Admin)
+GET localhost:8081/api/v1/comment/adm/list-profileId?profileId=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0MDQwNjMsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDkwNDYzLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.8zowGIIzWNJR-leLFQKSwTsv2GOKh1mXZURXI0ovYOFubhVdHGB5vkWxZmjWs-O2pnWnE4oPqyIgFkx9L6xLYw
+
+###List By JWT (User and Owner)
+GET localhost:8081/api/v1/comment/user/list-jwt
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzOTE4NzgsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDc4Mjc4LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.LM8gUDn-zUpPscAXO2flq1pJCI7XGhb0NR6_TmNSl6GvFG7OZVj9OVKgrhvhODnie2PExo0ZOsjhPzmRPZI33w
+###List by videoId
+GET localhost:8081/api/v1/comment/public/list-videoId?videoId=qeqwcecq
+###List by replied comment
+GET localhost:8081/api/v1/comment/public/list-replied?commentId=1
