@@ -29,5 +29,6 @@ public class AttachDTO {
     @NotNull(message = "CreatedDate required")
     private LocalDateTime createdDate;
     private LocalTime duration;
+    private String url;
 }
 

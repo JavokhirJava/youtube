@@ -8,10 +8,9 @@ import lombok.Setter;
 @Setter
 public class CommentRequestDTO {
     private Integer id;
-    @NotNull(message = "profile required")
-    private Integer profileId;
     @NotNull(message = "video required")
     private String videoId;
     @NotNull(message = "content required")
     private String content;
+    private Integer replyId;
 }

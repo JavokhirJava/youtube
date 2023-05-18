@@ -3,9 +3,14 @@ package company.entity;
 import company.enums.GeneralStatus;
 import company.enums.TypeEnums;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
-
+@Getter
+@Setter
+@Entity
+@Table(name = "video")
 public class VideoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -44,7 +49,7 @@ public class VideoEntity {
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attach_id", insertable = false, updatable = false)
-    private String channelId;
+    private ChannelEntity channelId;
     @Column(name = "title")
     private String title;
     @Column(name = "type")

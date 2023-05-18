@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Table(name = "comment")
@@ -29,7 +31,9 @@ public class CommentEntity {
     @JoinColumn(name = "reply_id",insertable=false, updatable=false)
     private CommentEntity replyComment;
     @Column(name = "like_count")
-    private Integer likeCount;
+    private Integer likeCount=0;
     @Column(name = "dislike_count")
-    private Integer dislikeCount;
+    private Integer dislikeCount=0;
+    @Column(name = "created_date")
+    private LocalDateTime createdDate=LocalDateTime.now();
 }

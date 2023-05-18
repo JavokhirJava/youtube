@@ -3,6 +3,7 @@ package company.service;
 import company.dto.profile.ChangeDTO;
 import company.dto.profile.ChangeEmailDTO;
 import company.dto.profile.ProfileDTO;
+import company.dto.profile.ProfilePhotoDTO;
 import company.entity.AttachEntity;
 import company.entity.ProfileEntity;
 import company.enums.GeneralStatus;
@@ -71,15 +72,18 @@ public class ProfileService {
         return dto;
     }
 
-    public ProfileDTO getProfile(Integer profileId) {
+    public ProfilePhotoDTO getProfile(Integer profileId) {
         ProfileMapper mapper = profileRepository.getProfileById(profileId);
         if (mapper == null) {
             throw new ItemNotFoundException("profile not found");
         }
-        ProfileDTO dto = new ProfileDTO();
+        ProfilePhotoDTO dto = new ProfilePhotoDTO();
         dto.setId(mapper.getId());
-        dto.setEmail(mapper.getEmail());
-        dto.setRole(mapper.getRole());
+        dto.setName(mapper.getName());
+        dto.setSurname(mapper.getSurname());
+        if (mapper.getPhoto() != null) {
+            dto.setPhoto(attachService.getProfilePhoto(mapper.getPhoto().getId()));
+        }
         return dto;
     }
 
@@ -152,5 +156,9 @@ public class ProfileService {
             throw new WrongException("Error");
         }
         return dto;
+    }
+
+    public boolean isAdmin(Integer profileId) {
+        return get(profileId).getRole().equals(ProfileRole.ROLE_ADMIN);
     }
 }

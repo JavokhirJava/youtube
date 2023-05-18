@@ -5,6 +5,7 @@ import company.entity.AttachEntity;
 import company.exps.ItemNotFoundException;
 import company.repository.AttachRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.*;
@@ -30,6 +31,8 @@ import java.util.Optional;
 public class AttachService {
     @Autowired
     private AttachRepository attachRepository;
+    @Value("${server.host}")
+    private String serverHost;
 
     public byte[] loadImage(String fileName) {
         byte[] imageInByte;
@@ -172,6 +175,14 @@ public class AttachService {
         dto.setOriginalName(entity.getOriginalName());
         dto.setPath(entity.getPath());
         dto.setExtension(entity.getExtension());
+        return dto;
+    }
+
+    public AttachDTO getProfilePhoto(String id) {
+        AttachEntity entity = get(id);
+        AttachDTO dto = new AttachDTO();
+        dto.setId(entity.getId());
+        dto.setUrl(serverHost + "/api/v1/attach/open/" + entity.getId() + "." + entity.getExtension());
         return dto;
     }
 }
