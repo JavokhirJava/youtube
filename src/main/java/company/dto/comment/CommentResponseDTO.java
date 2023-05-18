@@ -1,4 +1,4 @@
-package company.dto;
+package company.dto.comment;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import company.entity.VideoEntity;

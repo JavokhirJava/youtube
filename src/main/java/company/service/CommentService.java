@@ -1,7 +1,7 @@
 package company.service;
 
-import company.dto.CommentInfoDTO;
-import company.dto.CommentResponseDTO;
+import company.dto.comment.CommentInfoDTO;
+import company.dto.comment.CommentResponseDTO;
 import company.dto.comment.CommentDTO;
 import company.dto.comment.CommentRequestDTO;
 import company.entity.CommentEntity;
