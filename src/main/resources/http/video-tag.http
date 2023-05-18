@@ -1,0 +1,14 @@
+###Create video tag
+POST localhost:8081/api/v1/video-tag/user
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzOTE4NzgsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDc4Mjc4LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.LM8gUDn-zUpPscAXO2flq1pJCI7XGhb0NR6_TmNSl6GvFG7OZVj9OVKgrhvhODnie2PExo0ZOsjhPzmRPZI33w
+Content-Type: application/json
+
+{
+  "tagId":1,
+  "videoId": "qeqwcecq"
+}
+###Delete video tag
+DELETE localhost:8081/api/v1/video-tag/user/delete/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzOTE4NzgsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDc4Mjc4LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.LM8gUDn-zUpPscAXO2flq1pJCI7XGhb0NR6_TmNSl6GvFG7OZVj9OVKgrhvhODnie2PExo0ZOsjhPzmRPZI33w
+###Video Tag List
+GET localhost:8081/api/v1/video-tag/public/list/qeqwcecq
