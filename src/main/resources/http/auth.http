@@ -4,8 +4,8 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyNDEyNzksImVtYWlsIjoiY
 Content-Type:  application/json
 
 {
-  "email": "admin@mail.ru",
-  "password": "12345"
+  "email": "AliyevVali@gmail.com",
+  "password": "202020"
 }
 
 ### Registration

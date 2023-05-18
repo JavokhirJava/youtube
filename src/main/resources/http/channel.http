@@ -1,9 +1,9 @@
 ### Create channel
 POST localhost:8081/api/v1/channel/user
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyMzQ5MTgsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0MzIxMzE4LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.OWEmJ1qoxMwW8lHUeQ34-Y5SOvnBGbaYPX0xbW4rKPYyuLoc8oQDZigPMb5GUHfYV66BzJtLeBsgeyT2OyF89w
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0MDk5OTksImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDk2Mzk5LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.67aZPxKGvA1DG8ZSsb2g0Nma7K5VIYRBb90I4y_3_VlGoUXatbWg0MY1Nl91rHdnEZid1DK5fCYoFQDlsMpVsw
 Content-Type:  application/json
 
 {
-  "name": "Code_Uz",
-  "description": "Best Channel"
+  "name": "Code",
+  "description": "Best"
 }
