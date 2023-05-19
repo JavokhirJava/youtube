@@ -1,4 +1,4 @@
-POST http://localhost:8081/api/v1/attach/upload
+POST http://localhost:8081/api/v1/attach/public/upload
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
@@ -7,12 +7,13 @@ Content-Disposition: form-data; name="file"; filename="loop.jpg"
 < C:\Users\Java_Back_End\Desktop\HOMEWORK\loop.jpg
 
 
+
 ### video
 POST http://localhost:8081/api/v1/attach/public/upload
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
-Content-Disposition: form-data; name="file"; filename="1.mp4"
+Content-Disposition: form-data; name="file"; filename="2.mp4"
 
 < C:\Users\Java_Back_End\Desktop\HOMEWORK\1.mp4
 
@@ -26,9 +27,9 @@ GET http://localhost:8081/api/v1/attach/public/download/89fd1bc8-9760-468c-a8d9-
 
 ### pagination attach
 PUT localhost:8081/api/v1/attach/adm/paging
-Authorization: Beare eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODMxMTQ0MDMsImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODMyMDA4MDMsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.VKJN4tymkeuJaSX_WvuUVxWkSKLmnpaxtUKBXffb0ET-eHpQKYp3qIsTKkDUNwpx28O3hvazqBI8Hdjg0JXeow
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyNDgxOTQsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0MzM0NTk0LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.dc0weqsScvRtXzqOtnIYFzl23C8Hhks5V3xPYCI_yyv0AbID6I2AzBRiW5Y6-ofhkv90jml33p_hxf9Euh2NMg
 
 
 ### pagination attach
-GET localhost:8081/api/v1/attach/delete/ff4687a3-a764-4d6f-a3a6-10a7f2bd2074
-Authorization: Beare eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODMxMTQ0MDMsImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODMyMDA4MDMsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.VKJN4tymkeuJaSX_WvuUVxWkSKLmnpaxtUKBXffb0ET-eHpQKYp3qIsTKkDUNwpx28O3hvazqBI8Hdjg0JXeow
+GET localhost:8081/api/v1/attach/delete/b45c583e-2162-4949-a81d-ce5dd40261a4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQyNDc0ODIsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0MzMzODgzLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.O_U45Znho5qtlQXV8N8tqpTNteid0O8uGEWqnjHF3avgQORx2CEotUa5jguS17uzkTkwMn_91nJaygYWtovBfg

@@ -1,9 +1,11 @@
 package company.mapper;
 
-import company.enums.ProfileRole;
+import company.dto.attach.AttachDTO;
 
 public interface ProfileMapper {
     Integer getId();
     String getEmail();
-    ProfileRole getRole();
+    String getName();
+    String getSurname();
+    AttachDTO getPhoto();
 }

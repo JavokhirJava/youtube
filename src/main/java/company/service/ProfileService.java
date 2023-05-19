@@ -1,14 +1,16 @@
 package company.service;
 
-import company.dto.ChangeDTO;
-import company.dto.ChangeEmailDTO;
-import company.dto.ProfileDTO;
+import company.dto.profile.ChangeDTO;
+import company.dto.profile.ChangeEmailDTO;
+import company.dto.profile.ProfileDTO;
+import company.dto.profile.ProfilePhotoDTO;
 import company.entity.AttachEntity;
 import company.entity.ProfileEntity;
 import company.enums.GeneralStatus;
 import company.enums.ProfileRole;
 import company.exps.AppBadRequestException;
 import company.exps.ItemNotFoundException;
+import company.exps.PasswordWrongExeption;
 import company.exps.WrongException;
 import company.mapper.ProfileMapper;
 import company.repository.AttachRepository;
@@ -69,15 +71,19 @@ public class ProfileService {
         dto.setId(entity.getId());
         return dto;
     }
-    public ProfileDTO getProfile(Integer profileId) {
+
+    public ProfilePhotoDTO getProfile(Integer profileId) {
         ProfileMapper mapper = profileRepository.getProfileById(profileId);
-        if (mapper==null){
+        if (mapper == null) {
             throw new ItemNotFoundException("profile not found");
         }
-        ProfileDTO dto = new ProfileDTO();
+        ProfilePhotoDTO dto = new ProfilePhotoDTO();
         dto.setId(mapper.getId());
-        dto.setEmail(mapper.getEmail());
-        dto.setRole(mapper.getRole());
+        dto.setName(mapper.getName());
+        dto.setSurname(mapper.getSurname());
+        if (mapper.getPhoto() != null) {
+            dto.setPhoto(attachService.getProfilePhoto(mapper.getPhoto().getId()));
+        }
         return dto;
     }
 
@@ -88,12 +94,12 @@ public class ProfileService {
         AttachEntity attach = attachRepository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("Not found");
         });
-        profileRepository.attachUpdate(id,profile.getId());
+        profileRepository.attachUpdate(id, profile.getId());
         File file = new File(attachFolder + attach.getPath() + "/" + id + "." + attach.getExtension());
         if (file.delete()) {
             attachRepository.deleteById(id);
         }
-        return profileRepository.attachUpdate(id,userId);
+        return profileRepository.attachUpdate(id, userId);
     }
 
     public ProfileEntity get(Integer id) {
@@ -103,10 +109,9 @@ public class ProfileService {
     }
 
 
-
     public Boolean updateEmail(ChangeEmailDTO dto) {
         Optional<ProfileEntity> entity = profileRepository.findByEmail(dto.getOldEmail());
-        if (entity == null){
+        if (entity == null) {
             throw new ItemNotFoundException("Not found");
         }
         ProfileEntity profileEntity = get(dto.getId());
@@ -120,7 +125,7 @@ public class ProfileService {
     public Page<ProfileDTO> getProfileDetail(int page, int size) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
         Pageable paging = PageRequest.of(page - 1, size, sort);
-        Page<ProfileEntity> pageObj =  profileRepository.findAll(paging);
+        Page<ProfileEntity> pageObj = profileRepository.findAll(paging);
         long totalCount = pageObj.getTotalElements();
 //id,name,surname,email,main_photo((url)
         List<ProfileEntity> entityList = pageObj.getContent();
@@ -137,15 +142,23 @@ public class ProfileService {
         return new PageImpl<ProfileDTO>(dtoList, paging, totalCount);
     }
 
-    public ChangeDTO changePassword(ChangeDTO dto) {
+    public ChangeDTO changePassword(ChangeDTO dto, Integer id) {
+        ProfileEntity profile = profileRepository.findById(id).get();
+        if (profile.getPassword() != dto.getOldPassword()) {
+            throw new PasswordWrongExeption("Password Wrong");
+        }
         ProfileEntity exists = profileRepository.findByPassword(MD5Util.encode(dto.getOldPassword()));
-        if (exists == null){
+        if (exists == null) {
             throw new ItemNotFoundException("Not found");
         }
-        int b = profileRepository.updatePassword(exists.getId(),MD5Util.encode(dto.getNewPassword()));
-        if (b == 0){
+        int b = profileRepository.updatePassword(exists.getId(), MD5Util.encode(dto.getNewPassword()));
+        if (b == 0) {
             throw new WrongException("Error");
         }
         return dto;
+    }
+
+    public boolean isAdmin(Integer profileId) {
+        return get(profileId).getRole().equals(ProfileRole.ROLE_ADMIN);
     }
 }

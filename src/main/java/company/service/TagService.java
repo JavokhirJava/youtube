@@ -1,12 +1,12 @@
 package company.service;
 
-import com.dto.TagRequestDTO;
+import company.dto.tag.TagRequestDTO;
 import company.dto.tag.TagDTO;
 import company.entity.TagEntity;
+import company.entity.VideoEntity;
 import company.exps.AppBadRequestException;
 import company.exps.ItemNotFoundException;
 import company.repository.TagRepository;
-import company.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,4 +66,18 @@ import java.util.Optional;
         }
 
 
+        public TagDTO getTagDTO(Integer tagId) {
+            TagEntity entity = get(tagId);
+            TagDTO dto = new TagDTO();
+            dto.setId(entity.getId());
+            dto.setName(entity.getName());
+            return dto;
+        }
+        public TagEntity get(Integer id){
+            Optional<TagEntity> optional = tagRepository.findById(id);
+            if (optional.isEmpty()){
+                throw new AppBadRequestException("tag not found");
+            }
+            return optional.get();
+        }
     }

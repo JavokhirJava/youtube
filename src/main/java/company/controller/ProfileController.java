@@ -1,11 +1,11 @@
 package company.controller;
 
-import company.dto.ChangeDTO;
-import company.dto.ChangeEmailDTO;
-import company.dto.ProfileDTO;
-import company.enums.ProfileRole;
+import company.dto.profile.ChangeDTO;
+import company.dto.profile.ChangeEmailDTO;
+import company.dto.profile.ProfileDTO;
 import company.service.ProfileService;
 import company.util.JwtUtil;
+import company.util.SpringSecurityUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +38,13 @@ public class ProfileController {
     }
     @GetMapping("/adm/profile-Detail")
     public ResponseEntity<Page<ProfileDTO>> getAllProfileDetails(@RequestParam(value = "page", defaultValue = "1") int page,
-                                                  @RequestParam(value = "size", defaultValue = "2") int size) {
+                                                                 @RequestParam(value = "size", defaultValue = "2") int size) {
         return ResponseEntity.ok(profileService.getProfileDetail(page, size));
     }
     @PostMapping("/changePassword")
     public ResponseEntity<ChangeDTO> changePassword(@Valid @RequestBody ChangeDTO dto) {
-        ChangeDTO response = profileService.changePassword(dto);
+        Integer profilId = SpringSecurityUtil.getProfileId();
+            ChangeDTO response = profileService.changePassword(dto,profilId);
         return ResponseEntity.ok(response);
     }
 }
