@@ -1,6 +1,7 @@
 package company.service;
 
 import company.dto.attach.AttachDTO;
+import company.dto.attach.PreviewAttachDTO;
 import company.entity.AttachEntity;
 import company.exps.ItemNotFoundException;
 import company.repository.AttachRepository;
@@ -60,7 +61,7 @@ public class AttachService {
         String[] lastIndex = attachName.split("\\.");
         Optional<AttachEntity> photo = attachRepository.findById(lastIndex[0]);
         byte[] data;
-        if (photo.isEmpty()){
+        if (photo.isEmpty()) {
             return new byte[0];
         }
 
@@ -154,12 +155,13 @@ public class AttachService {
         Page<AttachDTO> response = new PageImpl<AttachDTO>(dtoList, pageable, totalCount);
         return response;
     }
+
     public Boolean delete(String id) {
         AttachEntity attachEntity = attachRepository.findById(id).get();
-        if (attachEntity==null){
+        if (attachEntity == null) {
             throw new ItemNotFoundException("Attach not found");
         }
-        File myObj = new File("attaches/"  + "/" + attachEntity.getPath()+"/" +attachEntity.getId()+ "." + attachEntity.getExtension());
+        File myObj = new File("attaches/" + "/" + attachEntity.getPath() + "/" + attachEntity.getId() + "." + attachEntity.getExtension());
         if (myObj.delete()) {
             System.out.println("Deleted the file: " + myObj.getName());
         } else {
@@ -181,6 +183,17 @@ public class AttachService {
     public AttachDTO getProfilePhoto(String id) {
         AttachEntity entity = get(id);
         AttachDTO dto = new AttachDTO();
+        dto.setId(entity.getId());
+        dto.setUrl(serverHost + "/api/v1/attach/open/" + entity.getId() + "." + entity.getExtension());
+        return dto;
+    }
+
+    public PreviewAttachDTO getPreviewAttach(String id) {
+        PreviewAttachDTO dto = new PreviewAttachDTO();
+        AttachEntity entity = get(id);
+        if (entity == null) {
+            return dto;
+        }
         dto.setId(entity.getId());
         dto.setUrl(serverHost + "/api/v1/attach/open/" + entity.getId() + "." + entity.getExtension());
         return dto;

@@ -1,22 +1,24 @@
 package company.service;
 
-import company.dto.ChangeEmailDTO;
+import company.dto.attach.PreviewAttachDTO;
+import company.dto.channel.ChannelShortInfoDTO;
+import company.dto.video.VideShortInfoDTO;
 import company.dto.video.VideoDTO;
-import company.entity.CategoryEntity;
 import company.entity.ChannelEntity;
 import company.entity.ProfileEntity;
 import company.entity.VideoEntity;
 import company.enums.GeneralStatus;
-import company.exps.AppBadRequestException;
-import company.exps.ItemNotFoundException;
 import company.exps.MethodNotAllowedException;
 import company.repository.ChannelRepository;
 import company.repository.ProfileRepository;
 import company.repository.VideoRepository;
 import company.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,6 +29,10 @@ public class VideoService {
     private ProfileRepository profileRepository;
     @Autowired
     private ChannelRepository channelRepository;
+    @Autowired
+    private AttachService attachService;
+    @Autowired
+    private ChannelService channelService;
 
     public VideoDTO create(VideoDTO dto) {
         VideoEntity entity = new VideoEntity();
@@ -71,18 +77,64 @@ public class VideoService {
         if (owner != profile.get().getId()) {
             throw new MethodNotAllowedException("it's not owner ");
         }
-        if (video.get().getStatus().equals(GeneralStatus.PUBLIC)){
+        if (video.get().getStatus().equals(GeneralStatus.PUBLIC)) {
             entity.setStatus(GeneralStatus.PRIVATE);
             videoRepository.save(entity);
-            return  true;
-        }else {
+            return true;
+        } else {
             entity.setStatus(GeneralStatus.PUBLIC);
             videoRepository.save(entity);
             return true;
         }
     }
+
     public Boolean viewCount(String id) {
-        int count=videoRepository.viewCount(id);
+        int count = videoRepository.viewCount(id);
         return true;
+    }
+
+    public List<VideShortInfoDTO> searchTitle(String title) {
+        return toDoShortInfo(title);
+    }
+
+    public List<VideShortInfoDTO> toDoShortInfo(String title) {
+        List<VideoEntity> list = videoRepository.findByTitle(title);
+        List<VideShortInfoDTO> info = new LinkedList<>();
+        for (VideoEntity entity : list) {
+            VideShortInfoDTO dto = new VideShortInfoDTO();
+            ChannelShortInfoDTO channel = channelService.getChannelShort(entity.getChannelId());
+            PreviewAttachDTO preview = attachService.getPreviewAttach(entity.getPreviewAttachId());
+            dto.setId(entity.getId());
+            dto.setTitle(entity.getTitle());
+            dto.setViewCount(entity.getViewCount());
+            dto.setPublishedDate(entity.getPublishedDate());
+            dto.setChannelShortInfoDTO(channel);
+            dto.setPreviewAttachDTO(preview);
+            info.add(dto);
+        }
+        return info;
+    }
+
+    public Page<VideShortInfoDTO> pagingCategory(Integer categoryId, int page, int size) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        Pageable paging = PageRequest.of(page - 1, size, sort);
+        Page<VideoEntity> pageObj = videoRepository.findByCategoryId(categoryId, paging);
+        Long totalCount = pageObj.getTotalElements();
+        List<VideoEntity> entityList = pageObj.getContent();
+        List<VideShortInfoDTO> dtoList = new LinkedList<>();
+        for (VideoEntity entity : entityList) {
+            VideShortInfoDTO dto = new VideShortInfoDTO();
+            ChannelShortInfoDTO channel = channelService.getChannelShort(entity.getChannelId());
+            PreviewAttachDTO preview = attachService.getPreviewAttach(entity.getPreviewAttachId());
+            dto.setId(entity.getId());
+            dto.setTitle(entity.getTitle());
+            dto.setViewCount(entity.getViewCount());
+            dto.setPublishedDate(entity.getPublishedDate());
+            dto.setChannelShortInfoDTO(channel);
+            dto.setPreviewAttachDTO(preview);
+            dtoList.add(dto);
+        }
+        Page<VideShortInfoDTO> response = new PageImpl<VideShortInfoDTO>(dtoList, paging, totalCount);
+        return response;
     }
 }
