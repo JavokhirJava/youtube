@@ -1,10 +1,7 @@
 package company.service;
 
 import company.dto.attach.AttachDTO;
-import company.dto.channel.ChannelDTO;
-import company.dto.channel.ChannelRequestDTO;
-import company.dto.channel.ChannelResponseDTO;
-import company.dto.channel.ChannelShortInfoDTO;
+import company.dto.channel.*;
 import company.entity.ChannelEntity;
 import company.exps.AppBadRequestException;
 import company.exps.ItemNotFoundException;
@@ -141,6 +138,13 @@ public class ChannelService {
         }
         AttachDTO dto1=attachService.getProfilePhoto(entity.getPhotoId());
         dto.setUrl(dto1.getUrl());
+        return dto;
+    }
+    public ChannelPhotoDTO getChannelPhoto(String id) {
+        ChannelEntity entity = get(id);
+        ChannelPhotoDTO dto = new ChannelPhotoDTO();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
         return dto;
     }
 }

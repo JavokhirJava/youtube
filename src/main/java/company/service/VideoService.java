@@ -30,9 +30,9 @@ public class VideoService {
     @Autowired
     private ChannelRepository channelRepository;
     @Autowired
-    private AttachService attachService;
-    @Autowired
     private ChannelService channelService;
+    @Autowired
+    private AttachService attachService;
 
     public VideoDTO create(VideoDTO dto) {
         VideoEntity entity = new VideoEntity();
@@ -77,22 +77,20 @@ public class VideoService {
         if (owner != profile.get().getId()) {
             throw new MethodNotAllowedException("it's not owner ");
         }
-        if (video.get().getStatus().equals(GeneralStatus.PUBLIC)) {
+        if (video.get().getStatus().equals(GeneralStatus.PUBLIC)){
             entity.setStatus(GeneralStatus.PRIVATE);
             videoRepository.save(entity);
-            return true;
-        } else {
+            return  true;
+        }else {
             entity.setStatus(GeneralStatus.PUBLIC);
             videoRepository.save(entity);
             return true;
         }
     }
-
     public Boolean viewCount(String id) {
-        int count = videoRepository.viewCount(id);
+        int count=videoRepository.viewCount(id);
         return true;
     }
-
     public List<VideShortInfoDTO> searchTitle(String title) {
         return toDoShortInfo(title);
     }

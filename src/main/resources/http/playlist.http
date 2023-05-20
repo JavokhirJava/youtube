@@ -1,0 +1,35 @@
+### Category create
+POST http://localhost:8081/api/v1/playlist/user/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ1ODYwNzYsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NjcyNDc2LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.jEh7PelbV7JGyPyUKpfIac4Kqbrx9oU_aa7UroHFH1rhRCza1cRxoXtCFfR09nIXBi0_bzT62lbPclMzauZJgg
+Content-Type: application/json
+
+{
+  "name": "sporttv",
+  "channelId": "d8fb7e7b-f8b0-42a2-a4ff-29f49f4c9b23",
+  "orderNum": 1,
+  "description": "about sport"
+}
+
+### Category update with id
+PUT http://localhost:8081/api/v1/playlist/user/update/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMzUyNjIsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDIxNjYyLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.rISZ4uKNnCv-ld5Z1x6BV0pULH6crmgyMcs8zxzkAxlSqZkXjBbPraRSaddn-2ISoegzmEO0R4FkfwdkdZqtEg
+Content-Type: application/json
+
+{
+  "name":"kickboxing"
+}
+
+###  Category delete with id
+DELETE http://localhost:8081/api/v1/playlist/adm/delete/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMzUyNjIsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDIxNjYyLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.rISZ4uKNnCv-ld5Z1x6BV0pULH6crmgyMcs8zxzkAxlSqZkXjBbPraRSaddn-2ISoegzmEO0R4FkfwdkdZqtEg
+### Category get all
+GET http://localhost:8081/api/v1/playlist/public/list
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMzUyNjIsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDIxNjYyLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.rISZ4uKNnCv-ld5Z1x6BV0pULH6crmgyMcs8zxzkAxlSqZkXjBbPraRSaddn-2ISoegzmEO0R4FkfwdkdZqtEg
+###List with user id
+GET http://localhost:8081/api/v1/playlist/get_list_user/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ1ODQxMjUsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NjcwNTI1LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.mBG5Lgwe9ft1hd8-0AyX_rnBIZwMUpdFG9yPhKFQ4ldMZiN2t_gBOHsJYK-72bb3PnwFoAyScFQ1hmEKdjkynA
+###User Playlist
+GET http://localhost:8081/api/v1/playlist/private/get_user_playlist
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ1ODc5MDksImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0Njc0MzA5LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.WdPlFyTreuBra0CWU7CkAtc48f_kGswWSobMOO_SzdLLEu2YeKaBQBKw_RCqMDe_PhswCWwCakYnul0gE5JsYw
+###Channel Playlist
+GET http://localhost:8081/api/v1/playlist/public/get_channel_playlist/d8fb7e7b-f8b0-42a2-a4ff-29f49f4c9b23

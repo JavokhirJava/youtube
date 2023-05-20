@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "category")
 @Entity
-public class CategoryEntity {
+public class CategoryEntity extends PlaylistEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
