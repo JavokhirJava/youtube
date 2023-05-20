@@ -1,0 +1,25 @@
+### Category create
+POST http://localhost:8081/api/v1/playlist/user/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMzUyNjIsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDIxNjYyLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.rISZ4uKNnCv-ld5Z1x6BV0pULH6crmgyMcs8zxzkAxlSqZkXjBbPraRSaddn-2ISoegzmEO0R4FkfwdkdZqtEg
+Content-Type: application/json
+
+{
+  "name": "sporttv",
+  "description": "about sport"
+}
+
+### Category update with id
+PUT http://localhost:8081/api/v1/playlist/user/update/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMzUyNjIsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDIxNjYyLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.rISZ4uKNnCv-ld5Z1x6BV0pULH6crmgyMcs8zxzkAxlSqZkXjBbPraRSaddn-2ISoegzmEO0R4FkfwdkdZqtEg
+Content-Type: application/json
+
+{
+  "name":"kickboxing"
+}
+
+###  Category delete with id
+DELETE http://localhost:8081/api/v1/playlist/adm/delete/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMzUyNjIsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDIxNjYyLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.rISZ4uKNnCv-ld5Z1x6BV0pULH6crmgyMcs8zxzkAxlSqZkXjBbPraRSaddn-2ISoegzmEO0R4FkfwdkdZqtEg
+### Category get all
+GET http://localhost:8081/api/v1/playlist/public/list
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQzMzUyNjIsImVtYWlsIjoiYWRtaW5AbWFpbC5ydSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg0NDIxNjYyLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.rISZ4uKNnCv-ld5Z1x6BV0pULH6crmgyMcs8zxzkAxlSqZkXjBbPraRSaddn-2ISoegzmEO0R4FkfwdkdZqtEg
