@@ -1,14 +1,14 @@
 ### Create video
 POST localhost:8081/api/v1/video/user/create
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0MDA5MzUsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDg3MzM1LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.qEtrJbiHwc6oOkYJeLTP4JEEq3YyQpVjNZh7bEcK0LOwt5m9G-uvkKQ35d8-zbVbsQ-tgCOdUG4_tfnePeqU2g
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0OTU4MjMsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NTgyMjIzLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.swYnHnBkRMJy0uU_tCJYUlPbFLcCGP-_FqKN3wT01ukyVk7S5l8eBe6FPXecta4Ru1-MgJu8M1uQWi44Xx0CRQ
 Content-Type:  application/json
 
 {
-  "categoryId": 1,
+  "categoryId": 2,
   "attachId": "c6e79cb9-64e7-47fd-95ce-1c74f863d61b",
-  "description": "asasa",
-  "title": "asa",
-  "type": "VIDEO",
+  "description": "qweq",
+  "title": "qaaq",
+  "type": "SHORT",
   "channelId": "ebeadcd8-c6e2-4458-b20b-863a375f386d",
   "priviewAttachId": "c6e79cb9-64e7-47fd-95ce-1c74f863d61b"
 }
@@ -38,3 +38,11 @@ PUT localhost:8081/api/v1/video/public/viewCount/43bf9f6d-3b39-4b14-9720-a9d4072
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0MDA5MzUsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDg3MzM1LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.qEtrJbiHwc6oOkYJeLTP4JEEq3YyQpVjNZh7bEcK0LOwt5m9G-uvkKQ35d8-zbVbsQ-tgCOdUG4_tfnePeqU2g
 
 
+
+### search video title
+GET localhost:8081/api/v1/video/public/search/qaaq
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0OTU4MjMsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NTgyMjIzLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.swYnHnBkRMJy0uU_tCJYUlPbFLcCGP-_FqKN3wT01ukyVk7S5l8eBe6FPXecta4Ru1-MgJu8M1uQWi44Xx0CRQ
+
+### pagingCategory
+POST localhost:8081/api/v1/video/public/pagingCategory/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0OTU4MjMsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NTgyMjIzLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.swYnHnBkRMJy0uU_tCJYUlPbFLcCGP-_FqKN3wT01ukyVk7S5l8eBe6FPXecta4Ru1-MgJu8M1uQWi44Xx0CRQ
