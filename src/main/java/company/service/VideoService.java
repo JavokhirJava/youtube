@@ -30,9 +30,9 @@ public class VideoService {
     @Autowired
     private ChannelRepository channelRepository;
     @Autowired
-    private AttachService attachService;
-    @Autowired
     private ChannelService channelService;
+    @Autowired
+    private AttachService attachService;
 
     public VideoDTO create(VideoDTO dto) {
         VideoEntity entity = new VideoEntity();
@@ -77,22 +77,20 @@ public class VideoService {
         if (owner != profile.get().getId()) {
             throw new MethodNotAllowedException("it's not owner ");
         }
-        if (video.get().getStatus().equals(GeneralStatus.PUBLIC)) {
+        if (video.get().getStatus().equals(GeneralStatus.PUBLIC)){
             entity.setStatus(GeneralStatus.PRIVATE);
             videoRepository.save(entity);
-            return true;
-        } else {
+            return  true;
+        }else {
             entity.setStatus(GeneralStatus.PUBLIC);
             videoRepository.save(entity);
             return true;
         }
     }
-
     public Boolean viewCount(String id) {
-        int count = videoRepository.viewCount(id);
+        int count=videoRepository.viewCount(id);
         return true;
     }
-
     public List<VideShortInfoDTO> searchTitle(String title) {
         return toDoShortInfo(title);
     }
@@ -119,6 +117,17 @@ public class VideoService {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
         Pageable paging = PageRequest.of(page - 1, size, sort);
         Page<VideoEntity> pageObj = videoRepository.findByCategoryId(categoryId, paging);
+        return paging(paging, pageObj);
+    }
+
+    public Page<VideShortInfoDTO> pagingTag(Integer tagId, int page, int size) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        Pageable paging = PageRequest.of(page - 1, size, sort);
+        Page<VideoEntity> pageObj = videoRepository.findByTagId(tagId, paging);
+        return paging(paging, pageObj);
+    }
+
+    public Page<VideShortInfoDTO> paging(Pageable paging, Page<VideoEntity> pageObj) {
         Long totalCount = pageObj.getTotalElements();
         List<VideoEntity> entityList = pageObj.getContent();
         List<VideShortInfoDTO> dtoList = new LinkedList<>();
