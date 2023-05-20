@@ -1,0 +1,18 @@
+### Create video like
+POST localhost:8081/api/v1/video_like/user
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ1NzY5NTMsImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NjYzMzUzLCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.wG5hGW8u2FmYJbL7ZoXqXz6m0cOFOrrO4zRgIQM-EaBXiH9Mz6v_CbtMhuiUoKzywz-PpBDoX0Fue6oFdi3msg
+Content-Type:  application/json
+
+{
+  "videoId": 1,
+  "profileId": 1,
+  "type": "LIKE"
+}
+
+### Update video Like
+PUT localhost:8081/api/v1/video_like/user/update
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ0MTE0NjksImVtYWlsIjoiQWxpeWV2VmFsaUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjg0NDk3ODY5LCJpc3MiOiJ5b3V0dWJlIHRlc3QgcG9ydGFsaSJ9.B3lfPlVdudFjr0E6mNITIlk2B0veEBkepyOniGdHobQxlIuzIsB3dKPkHqIIjGle17Ws2d0gP1ohjZcEMj3ZeA
+Content-Type:  application/json
+
+
+

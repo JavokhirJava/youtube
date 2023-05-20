@@ -1,6 +1,5 @@
 package company.service;
 
-import company.dto.ChangeEmailDTO;
 import company.dto.video.VideoDTO;
 import company.entity.CategoryEntity;
 import company.entity.ChannelEntity;
