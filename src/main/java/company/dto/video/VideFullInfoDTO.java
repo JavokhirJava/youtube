@@ -13,15 +13,14 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class VideFullInfoDTO {
-//    private String id;
-//    private String title;
-//    private String description;
-//    private AttachSHortDTO attachSHortDTO;
-//    private CategoryShortInfoDTO categoryShortInfoDTO;
-//
-//    private ChannelShortInfoDTO channelShortInfoDTO;
-//    private PreviewAttachDTO previewAttachDTO;
-//    private LocalDateTime publishedDate;
-//    private ChannelShortInfoDTO ;
-//    private Integer viewCount;
+    private String id;
+    private String title;
+    private String description;
+    private AttachSHortDTO attachSHortDTO;
+    private CategoryShortInfoDTO categoryShortInfoDTO;
+
+    private ChannelShortInfoDTO channelShortInfoDTO;
+    private PreviewAttachDTO previewAttachDTO;
+    private LocalDateTime publishedDate;
+    private Integer viewCount;
 }

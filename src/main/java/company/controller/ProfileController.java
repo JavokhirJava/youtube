@@ -8,6 +8,8 @@ import company.util.JwtUtil;
 import company.util.SpringSecurityUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +23,10 @@ import static company.enums.ProfileRole.ROLE_MODERATOR;
 public class ProfileController {
     @Autowired
     private ProfileService profileService;
-
+   private  static final Logger LOGGER = LoggerFactory.getLogger(ProfileController.class);
     @PostMapping("/adm-moder/create")
     public ResponseEntity<ProfileDTO> save(@RequestBody @Valid ProfileDTO profileDTO) {
+        LOGGER.info("Profile create {}",profileDTO);
         return ResponseEntity.ok(profileService.create(profileDTO));
     }
 

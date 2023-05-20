@@ -49,11 +49,11 @@ public class VideoController {
         Page<VideShortInfoDTO> response = videoService.pagingCategory(categoryId, page, size);
         return ResponseEntity.ok(response);
     }
-    @PostMapping(value = "/public/pagingTagId/{tagId}")
-    public ResponseEntity<Page<?>> pagingTagId(@RequestParam(value = "page", defaultValue = "2") int page,
-                                                  @RequestParam(value = "size", defaultValue = "2") int size,
-                                                  @PathVariable Integer  tagId) {
-        Page<VideShortInfoDTO> response = videoService.pagingTag(tagId, page, size);
-        return ResponseEntity.ok(response);
-    }
+//    @PostMapping(value = "/public/pagingTagId/{tagId}")
+//    public ResponseEntity<Page<?>> pagingTagId(@RequestParam(value = "page", defaultValue = "2") int page,
+//                                                  @RequestParam(value = "size", defaultValue = "2") int size,
+//                                                  @PathVariable Integer  tagId) {
+//        Page<VideShortInfoDTO> response = videoService.pagingTag(tagId, page, size);
+//        return ResponseEntity.ok(response);
+//    }
 }
