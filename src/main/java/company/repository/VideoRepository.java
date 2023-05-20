@@ -24,6 +24,6 @@ public interface VideoRepository extends CrudRepository<VideoEntity, String>, Pa
 
    List<VideoEntity> findByTitle(String title);
    Page<VideoEntity> findByCategoryId(Integer id,Pageable pageable);
-   Page<VideoEntity> findByTagId(Integer id,Pageable pageable);
+//   Page<VideoEntity> findByTagId(Integer id,Pageable pageable);
 
 }

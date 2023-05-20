@@ -18,10 +18,9 @@ public class VideFullInfoDTO {
     private String description;
     private AttachSHortDTO attachSHortDTO;
     private CategoryShortInfoDTO categoryShortInfoDTO;
-    private
+
     private ChannelShortInfoDTO channelShortInfoDTO;
     private PreviewAttachDTO previewAttachDTO;
     private LocalDateTime publishedDate;
-    private ChannelShortInfoDTO channelShortInfoDTO;
     private Integer viewCount;
 }
