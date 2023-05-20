@@ -119,6 +119,17 @@ public class VideoService {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
         Pageable paging = PageRequest.of(page - 1, size, sort);
         Page<VideoEntity> pageObj = videoRepository.findByCategoryId(categoryId, paging);
+        return paging(paging, pageObj);
+    }
+
+    public Page<VideShortInfoDTO> pagingTag(Integer tagId, int page, int size) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        Pageable paging = PageRequest.of(page - 1, size, sort);
+        Page<VideoEntity> pageObj = videoRepository.findByTagId(tagId, paging);
+        return paging(paging, pageObj);
+    }
+
+    public Page<VideShortInfoDTO> paging(Pageable paging, Page<VideoEntity> pageObj) {
         Long totalCount = pageObj.getTotalElements();
         List<VideoEntity> entityList = pageObj.getContent();
         List<VideShortInfoDTO> dtoList = new LinkedList<>();
