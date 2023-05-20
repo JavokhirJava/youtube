@@ -4,11 +4,13 @@ package company.controller;
 import company.dto.category.CategoryDTO;
 import company.service.CategoryService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/category")
 public class CategoryController {
@@ -17,6 +19,7 @@ public class CategoryController {
 
     @PostMapping("/adm/create")
     public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO dto) {
+        log.trace("");
         return ResponseEntity.ok(categoryService.create(dto));
     }
 

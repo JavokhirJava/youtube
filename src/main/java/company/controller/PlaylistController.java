@@ -3,6 +3,8 @@ package company.controller;
 import company.dto.playlist.PlayListInfoDTO;
 import company.dto.playlist.PlaylistDTO;
 import company.service.PlaylistService;
+
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,9 +17,10 @@ import java.util.List;
 public class PlaylistController {
     @Autowired
     private PlaylistService playlistService;
-
+//    private  static final Logger LOGGER = Logger.getLogger(PlaylistController.class);
     @PostMapping("/user/create")
     public ResponseEntity<PlaylistDTO> create(@RequestBody PlaylistDTO dto) {
+//        LOGGER.info("");
         return ResponseEntity.ok(playlistService.create(dto));
     }
 
