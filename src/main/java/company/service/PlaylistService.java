@@ -1,8 +1,7 @@
 package company.service;
 
-import company.dto.category.CategoryDTO;
+import company.dto.playlist.PlayListInfoDTO;
 import company.dto.playlist.PlaylistDTO;
-import company.entity.CategoryEntity;
 import company.entity.PlaylistEntity;
 import company.exps.AppBadRequestException;
 import company.repository.PlaylistRepository;
@@ -17,11 +16,18 @@ import java.util.Optional;
 public class PlaylistService {
     @Autowired
     private PlaylistRepository playlistRepository;
+    @Autowired
+    private ProfileService profileService;
+    @Autowired
+    private ChannelService channelService;
 
     public PlaylistDTO create(PlaylistDTO dto) {
         PlaylistEntity entity = new PlaylistEntity();
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
+        entity.setProfileId(SpringSecurityUtil.getProfileId());
+        entity.setChannelId(dto.getChannelId());
+        entity.setOrderNum(dto.getOrderNum());
         playlistRepository.save(entity);
         dto.setId(entity.getId());
         return dto;
@@ -66,4 +72,47 @@ public class PlaylistService {
         return dtoList;
     }
 
+    public List<PlayListInfoDTO> getListWithUser(Integer profileId) {
+        List<PlayListInfoDTO> dtoList = new LinkedList<>();
+        List<PlaylistEntity> list = playlistRepository.findAllByProfileIdOrderByOrderNumDesc(profileId);
+        for (PlaylistEntity entity : list) {
+            PlayListInfoDTO dto = new PlayListInfoDTO();
+            dto.setId(entity.getId());
+            dto.setName(entity.getName());
+            dto.setDescription(entity.getDescription());
+            dto.setProfile(profileService.getProfile(profileId));
+            dto.setChannel(channelService.getChannelPhoto(entity.getChannelId()));
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
+
+    public List<PlayListInfoDTO> getUserPlayList() {
+        List<PlayListInfoDTO> dtoList = new LinkedList<>();
+        List<PlaylistEntity> list = playlistRepository.findAllByProfileIdOrderByOrderNumDesc(SpringSecurityUtil.getProfileId());
+        for (PlaylistEntity entity : list) {
+            PlayListInfoDTO dto = new PlayListInfoDTO();
+            dto.setId(entity.getId());
+            dto.setName(entity.getName());
+            dto.setDescription(entity.getDescription());
+            dto.setProfile(profileService.getProfile(SpringSecurityUtil.getProfileId()));
+            dto.setChannel(channelService.getChannelPhoto(entity.getChannelId()));
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
+
+    public List<PlayListInfoDTO> getChannelPlayList(String channelId) {
+        List<PlayListInfoDTO> dtoList = new LinkedList<>();
+        List<PlaylistEntity> list = playlistRepository.findAllByChannelIdOrderByOrderNumDesc(channelId);
+        for (PlaylistEntity entity : list) {
+            PlayListInfoDTO dto = new PlayListInfoDTO();
+            dto.setId(entity.getId());
+            dto.setName(entity.getName());
+            dto.setDescription(entity.getDescription());
+            dto.setChannel(channelService.getChannelPhoto(entity.getChannelId()));
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
 }

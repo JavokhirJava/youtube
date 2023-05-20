@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Setter
 public class PlaylistDTO {
     private Integer id;
-    private Integer channel_id;
+    private String channelId;
     private String name;
     private String description;
-    private Integer order_num;
+    private Integer orderNum;
 }
